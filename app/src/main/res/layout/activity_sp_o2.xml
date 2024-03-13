@@ -7,9 +7,7 @@
     tools:context=".MainActivity">
 
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
@@ -29,16 +27,16 @@
 
             <EditText
                 android:layout_width="350dp"
-                android:layout_height="250dp"
+                android:layout_height="220dp"
                 android:layout_marginTop="-200dp"
                 android:background="@null"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:hint="HeartRate"
+                android:hint="Oxygen Saturation"
                 android:textAlignment="center"
                 android:textColor="@color/black"
 
                 android:textColorHint="@color/black"
-                android:textSize="60sp" />
+                android:textSize="52sp" />
 
             <LinearLayout
                 android:layout_width="150dp"
@@ -49,24 +47,31 @@
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="155dp"
-                    android:layout_height="180dp"
-                    android:src="@drawable/white_heart_2" />
+                    android:layout_height="100dp"
+                    android:layout_marginTop="19dp"
+                    android:src="@drawable/spo2" />
 
 
             </LinearLayout>
 
-            <EditText
+<!--            <EditText-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="80dp"-->
+<!--                android:background="@null"-->
+<!--                android:fontFamily="sans-serif-condensed-medium"-->
+<!--                android:hint="96"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="#075D8C"-->
+<!--                android:textColorHint="@color/black"-->
+<!--                android:textSize="40sp" />-->
+
+
+            <!-- Display retrieved oxygen saturation rate -->
+            <TextView
+                android:id="@+id/textViewDose"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:background="@null"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:hint="73 BPM"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textColorHint="@color/black"
-                android:textSize="40sp" />
-
-
+                android:layout_height="wrap_content"
+                android:textSize="16sp" />
 
 
         </LinearLayout>
