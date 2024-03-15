@@ -7,12 +7,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button.*
 import com.example.carewave1.R
 import com.example.carewave1.R.id.buttonHeartRate
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 //import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
+
+
 
     }
 }

@@ -4,6 +4,7 @@
         <shape android:shape="rectangle">
 
             <solid android:color="#067CBD"/>
+<!--            <solid android:color="@color/lavender"/>-->
 <!--            #328CBD-->
         </shape>
 

@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 import androidx.appcompat.widget.AppCompatButton
 import com.example.carewave1.R.id.buttonPressure
 import com.example.carewave1.R.id.buttonSaveMedication
@@ -31,8 +33,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-
         // Dashboard >>> Pressure Page
         val buttonPressure=findViewById<Button>(buttonPressure)
         buttonPressure.setOnClickListener {
@@ -57,6 +57,33 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////// NavBar to other pages //////////////////////////////////////
+
+// Dashboard(home icon) >> View_Medication2Page
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_item1 -> {
+                    // Navigate to View Medication 2 page
+                    val intent = Intent(this, ViewMedicationActivity2::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.navigation_item2 -> {
+                    // Navigate to another page if needed
+                    // Add code to handle navigation to another page
+                    true
+                }
+                R.id.navigation_item3 -> {
+                    // Navigate to another page if needed
+                    // Add code to handle navigation to another page
+                    true
+                }
+                else -> false
+            }
+        }
 
 
 
