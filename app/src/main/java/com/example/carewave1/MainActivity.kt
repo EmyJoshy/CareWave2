@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////// NavBar to other pages //////////////////////////////////////
 
-// Dashboard(home icon) >> View_Medication2Page
+// Dashboard(nav bar icons) >> Respective Page
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -72,13 +72,15 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.navigation_item2 -> {
-                    // Navigate to another page if needed
-                    // Add code to handle navigation to another page
+                    // Navigate to Home page
+                    val intent = Intent(this, DashboardActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.navigation_item3 -> {
-                    // Navigate to another page if needed
-                    // Add code to handle navigation to another page
+                    // Navigate to Profile page
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 else -> false

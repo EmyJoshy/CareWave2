@@ -2,6 +2,7 @@ package com.example.carewave1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 
 class View_Medication_Activity : AppCompatActivity() {
@@ -22,6 +23,14 @@ class View_Medication_Activity : AppCompatActivity() {
         textViewMedicineName.text = medicineName
         textViewDose.text = dose
         textViewTime.text = time
+//////////////////////////////////////////////BACK BUTTON NAVIGATION /////////////////////////////////////
+        val backButton: ImageView = findViewById(R.id.icon_back_arrow)
+
+        // Set OnClickListener to the back arrow ImageView
+        backButton.setOnClickListener {
+            // Perform the action to navigate back to the previous page
+            onBackPressed()
+        }
 
     }
 }

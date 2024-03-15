@@ -7,15 +7,54 @@
     tools:context=".MainActivity">
 
 
-    <RelativeLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        android:background="@drawable/app_bg"
-        android:backgroundTint="@color/white"
-        android:gravity="center"
-        android:padding="16dp"
-        tools:context=".MainActivity">
+        <!-- Toolbar -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/toolbar_bg"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <!-- Centered LinearLayout for items -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="">
+
+                <!-- Back Icon -->
+                <ImageView
+                    android:id="@+id/icon_back_arrow"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:src="@drawable/icon_back_arrow" />
+
+                <!-- CareWave Text -->
+                <TextView
+                    android:id="@+id/CareWave_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginEnd="-10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Pressure"
+                    android:textColor="@color/white"
+                    android:textSize="29sp" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
 
 
 
@@ -31,12 +70,12 @@
                 android:layout_marginTop="-200dp"
                 android:background="@null"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:hint="Pressure"
+                android:hint="Current Blood Pressure :"
                 android:textAlignment="center"
                 android:textColor="@color/black"
 
                 android:textColorHint="@color/black"
-                android:textSize="53sp" />
+                android:textSize="35sp" />
 
             <LinearLayout
                 android:layout_width="150dp"
@@ -72,6 +111,5 @@
 
 
 
-    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

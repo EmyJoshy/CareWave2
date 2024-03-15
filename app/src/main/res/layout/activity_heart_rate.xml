@@ -35,7 +35,7 @@
 
                     <!-- Back Icon -->
                     <ImageView
-                        android:id="@+id/menu_icon"
+                        android:id="@+id/icon_back_arrow"
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="start"
@@ -74,12 +74,12 @@
             android:layout_marginTop="00dp"
             android:background="@null"
             android:fontFamily="sans-serif-condensed-medium"
-            android:hint="HeartRate"
+            android:hint="Current HeartRate : "
             android:textAlignment="center"
             android:textColor="@color/black"
 
             android:textColorHint="@color/black"
-            android:textSize="60sp" />
+            android:textSize="40sp" />
 
         <LinearLayout
             android:layout_width="150dp"

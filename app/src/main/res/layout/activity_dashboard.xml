@@ -199,29 +199,6 @@
             android:layout_alignParentBottom="true"
             app:menu="@menu/bottom_nav_menu" />
 
-<!--        &lt;!&ndash; First Icon &ndash;&gt;-->
-<!--        <ImageView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="8dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:src="@drawable/icon_home" />-->
-
-<!--        &lt;!&ndash; Second Icon &ndash;&gt;-->
-<!--        <ImageView-->
-<!--            android:layout_width="118dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="8dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:src="@drawable/icon_home" />-->
-
-<!--        &lt;!&ndash; Third Icon &ndash;&gt;-->
-<!--        <ImageView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:src="@drawable/icon_notification"-->
-<!--            android:layout_margin="8dp"/>-->
     </LinearLayout>
 
 
