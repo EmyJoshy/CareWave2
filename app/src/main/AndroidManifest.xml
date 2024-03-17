@@ -32,7 +32,7 @@
             android:name=".View_Medication_Activity"
             android:exported="false" />
         <activity
-            android:name=".Edit_Medication_Activity"
+            android:name=".EditMedicationActivity"
             android:exported="false" />
         <activity
             android:name=".HeartRateActivity"

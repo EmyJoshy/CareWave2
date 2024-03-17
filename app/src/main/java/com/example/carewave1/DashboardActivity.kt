@@ -46,7 +46,7 @@ class DashboardActivity : AppCompatActivity() {
         // Dashboard >> Edit_MedicationPage
         val buttonMedicationReminder =findViewById<Button>(R.id.buttonMedicationReminder)
         buttonMedicationReminder.setOnClickListener {
-            val intent = Intent(this, Edit_Medication_Activity::class.java)
+            val intent = Intent(this, EditMedicationActivity::class.java)
             startActivity(intent)
         }
 
