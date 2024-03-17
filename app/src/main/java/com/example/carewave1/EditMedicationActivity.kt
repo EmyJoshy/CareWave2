@@ -5,9 +5,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.content.Intent
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TimePicker
 
-class Edit_Medication_Activity : AppCompatActivity() {
+class EditMedicationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_medication)
@@ -40,6 +41,7 @@ class Edit_Medication_Activity : AppCompatActivity() {
                     // Start ViewMedicationActivity
                     startActivity(intent)
                 }
+
 
 
 
