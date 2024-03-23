@@ -5,45 +5,57 @@ import android.os.Bundle
 import android.widget.Button
 import android.content.Intent
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.TimePicker
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class EditMedicationActivity : AppCompatActivity() {
+
+    // Medication data class
+    data class Medication(
+        val medicineName: String = "",
+        val dose: String = "",
+        val time: String = ""
+    )
+
+    private lateinit var database: FirebaseDatabase
+    private lateinit var medicationsRef: DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_medication)
 
+        database = FirebaseDatabase.getInstance()
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+        medicationsRef = database.getReference("medications").child(userId.toString())
 
-                // Assuming you have EditText fields for entering medication name, dose, and time
-                val editTextMedicineName = findViewById<EditText>(R.id.editTextMedicineName)
-                val editTextDose = findViewById<EditText>(R.id.editTextDose)
-                val editTextTime = findViewById<TimePicker>(R.id.editTextTime)
+        val editTextMedicineName = findViewById<EditText>(R.id.editTextMedicineName)
+        val editTextDose = findViewById<EditText>(R.id.editTextDose)
+        val editTextTime = findViewById<TimePicker>(R.id.editTextTime)
+        val saveMedicationButton = findViewById<Button>(R.id.buttonSaveMedication)
 
-                // Assuming you have a button with ID "saveButton" in your layout
-                val saveButton = findViewById<Button>(R.id.buttonSaveMedication)
+        saveMedicationButton.setOnClickListener {
+            val enteredMedicineName = editTextMedicineName.text.toString()
+            val enteredDose = editTextDose.text.toString()
+            val enteredHour = editTextTime.hour.toString()
+            val enteredMinute = editTextTime.minute.toString()
+            val enteredTime = "$enteredHour:$enteredMinute"
 
-                saveButton.setOnClickListener {
-                    // Retrieve entered medication information
-                    val enteredMedicineName = editTextMedicineName.text.toString()
-                    val enteredDose = editTextDose.text.toString()
-                    val enteredHour = editTextTime.hour.toString() // Get selected hour from TimePicker
-                    val enteredMinute = editTextTime.minute.toString() // Get selected minute from TimePicker
-                    val enteredTime = "$enteredHour:$enteredMinute" // Combine hour and minute
+            val medicationId = medicationsRef.push().key
+            val medication = Medication(enteredMedicineName, enteredDose, enteredTime)
 
-
-                    // Create an Intent to navigate to ViewMedicationActivity
-                    val intent = Intent(this, View_Medication_Activity::class.java).apply {
-                        putExtra("medicineName", enteredMedicineName)
-                        putExtra("dose", enteredDose)
-                        putExtra("time", enteredTime)
+            medicationId?.let {
+                medicationsRef.child(it)
+                    .setValue(medication)
+                    .addOnSuccessListener {
+                        val intent = Intent(this, ViewMedicationActivity::class.java)
+                        startActivity(intent)
                     }
-
-                    // Start ViewMedicationActivity
-                    startActivity(intent)
-                }
-
-
-
-
+                    .addOnFailureListener { e ->
+                        // Error handling
+                    }
+            }
+        }
     }
 }

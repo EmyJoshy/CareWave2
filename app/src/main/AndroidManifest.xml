@@ -29,7 +29,7 @@
             android:name=".SpO2Activity"
             android:exported="false" />
         <activity
-            android:name=".View_Medication_Activity"
+            android:name=".ViewMedicationActivity"
             android:exported="false" />
         <activity
             android:name=".EditMedicationActivity"

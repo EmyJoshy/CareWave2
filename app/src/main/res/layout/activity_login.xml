@@ -38,20 +38,20 @@
 
         <!-- UserName EditText -->
         <EditText
-            android:id="@+id/et_user_name"
+            android:id="@+id/userNameL"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="12dp"
             android:hint="UserName"
             android:textAlignment="center"
-            android:textColor="#6bfff7"
+            android:textColor="#000000"
             android:textColorHint="#37837F"
             android:importantForAutofill="no"
             android:inputType="" />
 
         <!-- Password EditText -->
         <EditText
-            android:id="@+id/et_password"
+            android:id="@+id/passwordL"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:hint="Password"
@@ -69,34 +69,44 @@
             android:orientation="horizontal"
             android:padding="25dp">
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send Data"
+                android:onClick="sendData"
+                android:textAllCaps="false"
+                android:translationX="1dp"/>
+
             <!-- Reset Button -->
             <Button
-                android:id="@+id/btn_reset"
+                android:id="@+id/buttonReset"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Reset"
                 android:textAllCaps="false"
-                android:translationX="75dp"/>
+                android:translationX="5dp"/>
 
             <!-- Submit Button -->
             <Button
-                android:id="@+id/buttonSubmit"
+                android:id="@+id/buttonLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Submit"
+                android:text="@string/login"
                 android:textAllCaps="false"
-                android:translationX="90dp"/>
+                android:translationX="9dp"/>
         </LinearLayout>
 
         <TextView
-            android:id="@+id/signup_link"
+            android:id="@+id/signUpLink"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:text="Don't have an account? Sign up here."
+            android:text="@string/sign_up_here"
             android:textColor="@color/blue"
             android:textStyle="italic"
             android:clickable="true"
-            android:onClick="openSignUpPage"/>
+            android:onClick="navigateToSignUpPage"
+            android:focusable="true" />
+
 
 
     </LinearLayout>
