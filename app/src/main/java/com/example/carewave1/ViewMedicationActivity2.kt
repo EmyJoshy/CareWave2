@@ -10,7 +10,7 @@ class ViewMedicationActivity2 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_view_medication2)
+        setContentView(R.layout.activity_view_medication)
 
         // Get the current user's ID from Firebase Authentication
         val userId = FirebaseAuth.getInstance().currentUser?.uid
