@@ -1,51 +1,57 @@
 package com.example.carewave1
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import androidx.appcompat.app.ActionBar
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.TextView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
 class ViewMedicationActivity2 : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_medication2)
 
-        // Find the ImageView for the back arrow
-        val backButton: ImageView = findViewById(R.id.icon_back_arrow)
+        // Get the current user's ID from Firebase Authentication
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
 
-        // Set OnClickListener to the back arrow ImageView
-        backButton.setOnClickListener {
-            // Perform the action to navigate back to the previous page
-            onBackPressed()
+        // If the user is not logged in, return
+        if (userId == null) {
+            // Handle the case where the user is not logged in
+            return
         }
 
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        // Get a reference to the Firebase Realtime Database for the user's medications
+        val database = FirebaseDatabase.getInstance()
+        val medicationsRef = database.getReference("medications/$userId")
 
+        // Assuming you have TextViews to display medication information
+        val textViewMedicineName = findViewById<TextView>(R.id.textViewMedicineName)
+        val textViewDose = findViewById<TextView>(R.id.textViewDose)
+        val textViewTime = findViewById<TextView>(R.id.textViewTime)
 
-        bottomNavigationView.setOnItemSelectedListener  { item ->
-            when (item.itemId) {
-                R.id.navigation_item1 -> {
-                    // Navigate to View Medication 2 page
-                    val intent = Intent(this, ViewMedicationActivity2::class.java)
-                    startActivity(intent)
-                    true
+        // Read medication data from Firebase Realtime Database
+        medicationsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Clear TextViews initially
+                textViewMedicineName.text = ""
+                textViewDose.text = ""
+                textViewTime.text = ""
+
+                // Loop through all medications for the current user
+                for (medicationSnapshot in dataSnapshot.children) {
+                    // Get medication data
+                    val medication = medicationSnapshot.getValue(EditMedicationActivity.Medication::class.java)
+                    // Display medication data in TextViews
+                    textViewMedicineName.append("${medication?.medicineName}\n")
+                    textViewDose.append("${medication?.dose}\n")
+                    textViewTime.append("${medication?.time}\n")
                 }
-                R.id.navigation_item2 -> {
-                    // Navigate to Home page
-                    val intent = Intent(this, DashboardActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                R.id.navigation_item3 -> {
-                    // Navigate to Profile page
-                    val intent = Intent(this, ProfileActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                else -> false
             }
-        }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle errors
+            }
+        })
     }
 }

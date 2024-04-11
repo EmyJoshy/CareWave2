@@ -39,14 +39,14 @@
 
                 <!-- CareWave Text -->
                 <TextView
-                    android:id="@+id/CareWave_txt"
+                    android:id="@+id/medicinesListTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="75dp"
                     android:layout_marginEnd="-10dp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Medicines List"
+                    android:text="@string/medicines_list"
                     android:textColor="@color/white"
                     android:textSize="23sp" />
             </LinearLayout>
@@ -55,6 +55,7 @@
 
 
     <LinearLayout
+        android:id="@+id/medicationsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -71,10 +72,10 @@
             android:focusable="true"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
-            android:layout_marginLeft="35dp"
+            android:layout_marginStart="35dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginRight="40dp">
+            android:layout_marginEnd="40dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -94,8 +95,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:text="Paracetamol" />
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
                     android:id="@+id/imageView"
@@ -115,7 +115,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:gravity="center"
-                    android:text="Dose:1"
                     android:textAlignment="center"
                     android:textColor="@color/blue"
                     android:textSize="20sp"
@@ -132,41 +131,12 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="2dp"
                     android:gravity="center"
-                    android:text="Time: 9 am"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="@color/blue"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-
-                <!--                <TextView-->
-<!--                    android:id="@+id/textView3"-->
-<!--                    android:layout_width="47dp"-->
-<!--                    android:layout_height="30dp"-->
-<!--                    android:layout_marginStart="35dp"-->
-<!--                    android:layout_marginTop="2dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="dose"-->
-<!--                    android:textAlignment="center"-->
-<!--                    android:textAllCaps="true"-->
-<!--                    android:textColor="#4fb3bf"-->
-<!--                    android:textSize="17sp"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/textView2" />-->
-
-                <!--                <com.github.mikephil.charting.charts.LineChart-->
-                <!--                    android:layout_width="315dp"-->
-                <!--                    android:layout_height="100dp"-->
-                <!--                    android:layout_marginStart="8dp"-->
-                <!--                    android:layout_marginTop="8dp"-->
-                <!--                    android:layout_marginEnd="8dp"-->
-                <!--                    android:layout_marginBottom="8dp"-->
-                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                    app:layout_constraintStart_toEndOf="@+id/textView3"-->
-                <!--                    app:layout_constraintTop_toBottomOf="@+id/textView" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -175,7 +145,7 @@
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
-<!--    Nav Bar -->
+    <!--    Nav Bar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="61dp"
@@ -188,7 +158,6 @@
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             app:menu="@menu/bottom_nav_menu" />
 
 

@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CareWave1"
         tools:targetApi="31">
-
+        <activity
+            android:name=".MedicationItemsActivity"
+            android:exported="false" />
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />
@@ -40,7 +42,6 @@
         <activity
             android:name=".DashboardActivity"
             android:exported="false" />
-
         <activity
             android:name=".LoginActivity"
             android:exported="true">
