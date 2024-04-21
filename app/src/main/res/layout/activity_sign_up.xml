@@ -51,6 +51,14 @@
             android:layout_marginTop="16dp"/>
 
         <EditText
+            android:id="@+id/userContactTextView"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Contact"
+            android:inputType="number"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
             android:id="@+id/passwordS"
             android:layout_width="match_parent"
             android:layout_height="48dp"
