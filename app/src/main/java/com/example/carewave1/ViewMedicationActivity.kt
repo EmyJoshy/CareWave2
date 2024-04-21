@@ -2,6 +2,7 @@ package com.example.carewave1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -14,6 +15,14 @@ class ViewMedicationActivity: AppCompatActivity() {
 
         // Get the current user's ID from Firebase Authentication
         val userId = FirebaseAuth.getInstance().currentUser?.uid
+        val backButton: ImageView = findViewById(R.id.icon_back_arrow)
+
+// Set OnClickListener to the back arrow ImageView
+        backButton.setOnClickListener {
+            // Finish the current activity to navigate back to the previous page
+            finish()
+        }
+
 
         // If the user is not logged in, return
         if (userId == null) {

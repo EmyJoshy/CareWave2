@@ -4,9 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.Button.*
-import com.example.carewave1.R
-import com.example.carewave1.R.id.buttonHeartRate
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 //import kotlinx.android.synthetic.main.activity_dashboard.*
@@ -55,6 +52,8 @@ class DashboardActivity : AppCompatActivity() {
 
 // Dashboard(nav bar icons) >> Respective Page
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val homeMenuItemId = R.id.navigation_item2
+        bottomNavigationView.setSelectedItemId(homeMenuItemId)
 
 
         bottomNavigationView.setOnItemSelectedListener  { item ->
@@ -85,4 +84,20 @@ class DashboardActivity : AppCompatActivity() {
 
 
     }
+    override fun onResume() {
+        super.onResume()
+
+        // Get reference to your BottomNavigationView
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+
+        // Get the ID of the "Home" menu item
+        val homeMenuItemId = R.id.navigation_item2 // Replace with the ID of your "Home" menu item
+
+        // Check if the "Home" item is not already selected
+        if (bottomNavigationView.selectedItemId != homeMenuItemId) {
+            // Set the "Home" menu item as the selected item
+            bottomNavigationView.selectedItemId = homeMenuItemId
+        }
+    }
+
 }
