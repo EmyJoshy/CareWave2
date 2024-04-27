@@ -24,7 +24,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@drawable/toolbar_bg"
+                android:background="@drawable/bottom_button_bg"
                 app:layout_scrollFlags="scroll|enterAlways">
 
                 <!-- Centered LinearLayout for items -->
@@ -68,23 +68,13 @@
         tools:layout_editor_absoluteX="-55dp"
         tools:layout_editor_absoluteY="0dp">
 
-        <TextView
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="00dp"
-            android:background="@null"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:hint="Current HeartRate : "
-            android:textAlignment="center"
-            android:textColor="@color/black"
 
-            android:textColorHint="@color/black"
-            android:textSize="40sp" />
 
         <LinearLayout
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:background="@drawable/heart_rate_bg"
+            android:layout_marginTop="-70sp"
+            android:background="@drawable/bottom_button_bg"
             android:orientation="vertical">
 
 
@@ -98,6 +88,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="80dp"
+            android:layout_marginTop="40sp"
             android:background="@null"
             android:fontFamily="sans-serif-condensed-medium"
             android:hint="73 BPM"
@@ -105,6 +96,19 @@
             android:textColor="#000000"
             android:textColorHint="@color/black"
             android:textSize="40sp" />
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="00dp"
+            android:background="@null"
+            android:fontFamily="sans-serif"
+            android:hint="Your HeartRate is Normal  "
+            android:textAlignment="center"
+            android:textColor="@color/black"
+
+            android:textColorHint="@color/black"
+            android:textSize="25sp" />
 
 
     </LinearLayout>

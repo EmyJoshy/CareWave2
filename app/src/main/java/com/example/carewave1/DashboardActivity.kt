@@ -4,6 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import android.widget.Button.*
+import com.example.carewave1.R
+import com.example.carewave1.R.id.buttonHeartRate
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 //import kotlinx.android.synthetic.main.activity_dashboard.*
@@ -20,21 +23,21 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Dashboard >>> SpO2 Page
-        val buttonSpO2=findViewById<Button>(R.id.buttonSpO2)
-        buttonSpO2.setOnClickListener {
-            val intent = Intent(this, SpO2Activity::class.java)
-            startActivity(intent)
-        }
-        // Dashboard >>> Pressure Page
-        val buttonPressure=findViewById<Button>(R.id.buttonPressure)
-        buttonPressure.setOnClickListener {
-            val intent = Intent(this, PressureActivity::class.java)
-            startActivity(intent)
-        }
+//        // Dashboard >>> SpO2 Page
+//        val buttonSpO2=findViewById<Button>(R.id.buttonSpO2)
+//        buttonSpO2.setOnClickListener {
+//            val intent = Intent(this, SpO2Activity::class.java)
+//            startActivity(intent)
+//        }
+//        // Dashboard >>> Pressure Page
+//        val buttonPressure=findViewById<Button>(R.id.buttonPressure)
+//        buttonPressure.setOnClickListener {
+//            val intent = Intent(this, PressureActivity::class.java)
+//            startActivity(intent)
+//        }
 
         // Dashboard >>> Steps Page
-        val buttonSteps=findViewById<Button>(R.id.buttonSteps)
+        val buttonSteps=findViewById<Button>(R.id.buttonSpO2)
         buttonSteps.setOnClickListener {
             val intent = Intent(this, StepsActivity::class.java)
             startActivity(intent)
