@@ -23,12 +23,12 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-//        // Dashboard >>> SpO2 Page
-//        val buttonSpO2=findViewById<Button>(R.id.buttonSpO2)
-//        buttonSpO2.setOnClickListener {
-//            val intent = Intent(this, SpO2Activity::class.java)
-//            startActivity(intent)
-//        }
+        // Dashboard >>> SpO2 Page
+        val buttonSpO2=findViewById<Button>(R.id.buttonSpO2)
+        buttonSpO2.setOnClickListener {
+            val intent = Intent(this, SpO2Activity::class.java)
+            startActivity(intent)
+        }
 //        // Dashboard >>> Pressure Page
 //        val buttonPressure=findViewById<Button>(R.id.buttonPressure)
 //        buttonPressure.setOnClickListener {
@@ -36,12 +36,12 @@ class DashboardActivity : AppCompatActivity() {
 //            startActivity(intent)
 //        }
 
-        // Dashboard >>> Steps Page
-        val buttonSteps=findViewById<Button>(R.id.buttonSpO2)
-        buttonSteps.setOnClickListener {
-            val intent = Intent(this, StepsActivity::class.java)
-            startActivity(intent)
-        }
+//        // Dashboard >>> Steps Page
+//        val buttonSteps=findViewById<Button>(R.id.buttonSpO2)
+//        buttonSteps.setOnClickListener {
+//            val intent = Intent(this, StepsActivity::class.java)
+//            startActivity(intent)
+//        }
 
         // Dashboard >> Edit_MedicationPage
         val buttonMedicationReminder =findViewById<Button>(R.id.buttonMedicationReminder)

@@ -63,7 +63,7 @@ class EditMedicationActivity : AppCompatActivity() {
                     .setValue(medication)
                     .addOnSuccessListener {
                         // Schedule alarm for medication reminder
-                        scheduleMedicationReminder(enteredTime) // Call scheduleMedicationReminder() with enteredTime
+                        scheduleMedicationReminder(enteredMedicineName, enteredDose, enteredTime) // Call scheduleMedicationReminder() with enteredTime
                         // Navigate to ViewMedicationActivity
                         val intent = Intent(this, ViewMedicationActivity::class.java)
                         startActivity(intent)
@@ -91,7 +91,7 @@ class EditMedicationActivity : AppCompatActivity() {
 
 
     @SuppressLint("ScheduleExactAlarm")
-    private fun scheduleMedicationReminder(time: String) {
+    private fun scheduleMedicationReminder(medicineName: String, dose: String, time: String) {
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val calendar = Calendar.getInstance()
         val currentHour = calendar.get(Calendar.HOUR_OF_DAY)
@@ -111,8 +111,16 @@ class EditMedicationActivity : AppCompatActivity() {
             calendar.set(Calendar.MINUTE, minute)
         }
 
-        val intent = Intent(this, MedicationReminderReceiver::class.java)
+        // Create intent with medication details as extras
+        val intent = Intent(this, MedicationReminderReceiver::class.java).apply {
+            putExtra("medicineName", medicineName)
+            putExtra("dose", dose)
+            putExtra("time", time)
+        }
+
         val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
         alarmManager.setExact(RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
     }
+
+
 }
