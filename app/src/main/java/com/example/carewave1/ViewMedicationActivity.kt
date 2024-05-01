@@ -1,5 +1,6 @@
 package com.example.carewave1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -17,10 +18,12 @@ class ViewMedicationActivity: AppCompatActivity() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         val backButton: ImageView = findViewById(R.id.icon_back_arrow)
 
-// Set OnClickListener to the back arrow ImageView
+        // Set OnClickListener to the back arrow ImageView
         backButton.setOnClickListener {
-            // Finish the current activity to navigate back to the previous page
-            finish()
+            // Navigate back to the dashboard activity
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+            finish() // Finish the current activity to prevent returning to it via back navigation
         }
 
 

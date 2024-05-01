@@ -1,18 +1,20 @@
 package com.example.carewave1
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.carewave1.DashboardActivity
 import com.google.android.material.card.MaterialCardView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.type.Color
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -25,7 +27,6 @@ class ViewMedicationActivity2 : AppCompatActivity() {
 
         // Get the current user's ID from Firebase Authentication
         val userId = FirebaseAuth.getInstance().currentUser?.uid
-
         // If the user is not logged in, return
         if (userId == null) {
             // Handle the case where the user is not logged in
@@ -42,8 +43,21 @@ class ViewMedicationActivity2 : AppCompatActivity() {
         // Read medication data from Firebase Realtime Database
         medicationsRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Create a list to store medications
+                val medications = mutableListOf<DataSnapshot>()
+
                 // Loop through all medications for the current user
                 for (medicationSnapshot in dataSnapshot.children) {
+                    medications.add(medicationSnapshot)
+                }
+
+                // Sort medications by time
+                medications.sortBy { medicationSnapshot ->
+                    medicationSnapshot.child("time").getValue(String::class.java)
+                }
+
+                // Loop through sorted medications
+                for (medicationSnapshot in medications) {
                     // Get medication data
                     val medication = medicationSnapshot.getValue(object : GenericTypeIndicator<Map<String, String>>() {})
 
@@ -76,8 +90,6 @@ class ViewMedicationActivity2 : AppCompatActivity() {
                     // Always set the text color to purple1
                     textViewMedicineName.setTextColor(ContextCompat.getColor(this@ViewMedicationActivity2, R.color.purple1))
 
-
-
                     // Create TextView for dose
                     val textViewDose = TextView(this@ViewMedicationActivity2)
                     textViewDose.text = "Dose: ${medication?.get("dose")}"
@@ -87,9 +99,8 @@ class ViewMedicationActivity2 : AppCompatActivity() {
                         LinearLayout.LayoutParams.MATCH_PARENT, // Width
                         LinearLayout.LayoutParams.WRAP_CONTENT // Height
                     )
-                    doseLayoutParams.setMargins(25, 158, 0, 12) // Set margins if needed
+                    doseLayoutParams.setMargins(25, 120, 0, 12) // Set margins if needed
                     textViewDose.layoutParams = doseLayoutParams
-
 
                     // Get the current time in the format matching your Firebase time format
                     val currentTime = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Calendar.getInstance().time)
@@ -101,14 +112,13 @@ class ViewMedicationActivity2 : AppCompatActivity() {
                         LinearLayout.LayoutParams.MATCH_PARENT, // Width
                         LinearLayout.LayoutParams.WRAP_CONTENT // Height
                     )
-                    timeLayoutParams.setMargins(25, 300, 0, 18) // Set margins if needed
+                    timeLayoutParams.setMargins(25, 190, 0, 18) // Set margins if needed
                     textViewTime.layoutParams = timeLayoutParams
 
                     // Set color for the time text if it matches the current time retrieved from Firebase
                     if (medication?.get("time") == currentTime) {
                         textViewTime.setTextColor(ContextCompat.getColor(this@ViewMedicationActivity2, R.color.purple1))
                     }
-
 
                     // Add TextViews to the card
                     cardView.addView(textViewMedicineName)
@@ -117,7 +127,6 @@ class ViewMedicationActivity2 : AppCompatActivity() {
                     // Add the card to the medicationsLayout
                     medicationsLayout.addView(cardView)
 
-
                     //////////// Add a delete button to each card//////////////////
                     val deleteButton = Button(this@ViewMedicationActivity2)
                     deleteButton.text = "Delete"
@@ -125,9 +134,6 @@ class ViewMedicationActivity2 : AppCompatActivity() {
                         LinearLayout.LayoutParams.WRAP_CONTENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT
                     )
-                    /////// Create the delete button as an ImageButton
-//                    val deleteButton = ImageButton(this@ViewMedicationActivity2)
-//                    deleteButton.setImageResource(R.drawable.delete_icon) // Set the image resource to the delete icon
 
                     // Set layout parameters for the delete button
                     val deleteButtonLayoutParams = LinearLayout.LayoutParams(
@@ -135,7 +141,7 @@ class ViewMedicationActivity2 : AppCompatActivity() {
                         LinearLayout.LayoutParams.WRAP_CONTENT
                     )
                     deleteButtonLayoutParams.gravity = Gravity.END or Gravity.BOTTOM // Align to bottom-right corner
-                    deleteButtonLayoutParams.setMargins(700, 220, 20, 16) // Add margin for spacing
+                    deleteButtonLayoutParams.setMargins(700, 170, 20, 10) // Add margin for spacing
                     deleteButton.layoutParams = deleteButtonLayoutParams
                     // Set onClickListener for the delete button
                     deleteButton.setOnClickListener {
@@ -153,7 +159,6 @@ class ViewMedicationActivity2 : AppCompatActivity() {
                     }
                     // Add the delete button to the card
                     cardView.addView(deleteButton)
-
                 }
             }
 
@@ -161,5 +166,16 @@ class ViewMedicationActivity2 : AppCompatActivity() {
                 // Handle errors
             }
         })
+
+        // Initialize the back arrow
+        val backButton: ImageView = findViewById(R.id.icon_back_arrow)
+
+        // Set OnClickListener to the back arrow ImageButton
+        backButton.setOnClickListener {
+            // Navigate back to the dashboard activity
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+            finish() // Finish the current activity to prevent returning to it via back navigation
+        }
     }
 }

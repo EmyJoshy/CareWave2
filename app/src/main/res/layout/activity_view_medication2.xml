@@ -151,21 +151,5 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- Nav Bar -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="61dp"
-        android:layout_gravity="bottom"
-        android:background="@drawable/toolbar_bg"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:menu="@menu/bottom_nav_menu" />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

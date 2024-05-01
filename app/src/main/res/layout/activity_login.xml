@@ -4,34 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
     tools:context=".LoginActivity">
 
     <LinearLayout
         android:id="@+id/ll_main_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#EDEAEA"
+        android:background="@android:color/transparent"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="25dp"
         tools:ignore="UselessParent">
 
+        <ImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="126dp"
+            android:layout_height="142dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-50sp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/carewave_logo" />
         <!-- App Name -->
 
-        <!-- Login Text -->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="-5dp"
+            android:fontFamily="serif"
             android:text="CareWave"
             android:textColor="#3168C8"
-            android:textSize="35sp" />
-
+            android:textSize="40sp" />
+        <!-- Login Text -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="30dp"
+            android:padding="10dp"
             android:text="Login"
             android:textColor="#3168C8"
             android:textSize="35sp" />
@@ -41,7 +49,7 @@
             android:id="@+id/userNameL"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="72dp"
             android:hint="UserName"
             android:textAlignment="center"
             android:textColor="#000000"
@@ -54,6 +62,7 @@
             android:id="@+id/passwordL"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_marginTop="10sp"
             android:hint="Password"
             android:inputType="textPassword"
             android:textAlignment="center"

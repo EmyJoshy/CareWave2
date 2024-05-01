@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -59,12 +60,24 @@ class ProfileActivity : AppCompatActivity() {
                         userContactTextView.text = "Contact: $contact"
                     }
                 }
+
+
                 override fun onCancelled(databaseError: DatabaseError) {
                     // Handle errors
                     // For now, log the error
                     Log.e("ProfileActivity", "Database Error: ${databaseError.message}")
                 }
             })
+
+            // Initialize the back button
+            val backButton: ImageView = findViewById(R.id.icon_back_arrow)
+
+            // Set OnClickListener to the back button
+            backButton.setOnClickListener {
+                // Navigate to the dashboard activity
+                val intent = Intent(this, DashboardActivity::class.java)
+                startActivity(intent)
+                finish() // Finish the current activity to prevent returning to it via back navigation
         }
     }
-}
+}}
